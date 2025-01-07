@@ -278,7 +278,6 @@ JS
 
         if ($client instanceof Client) {
             $client->waitFor('form#first-form', 5);
-            dump($clientFactory, $crawler->filter('form#first-form'));
         }
 
         $form = $crawler->filter('form#first-form')->eq(0)->selectButton('OK')->form([
