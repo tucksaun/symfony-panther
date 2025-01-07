@@ -276,6 +276,10 @@ JS
         $client = $clientFactory();
         $crawler = $client->request('GET', static::$baseUri.'/form.html');
 
+        if ($client instanceof Client) {
+            $client->waitFor('form#first-form', 5);
+        }
+
         dump($clientFactory, $crawler->filter('form#first-form')->eq(0)->html());
         $form = $crawler->filter('form#first-form')->eq(0)->selectButton('OK')->form([
             'i1' => 'Reclus',
