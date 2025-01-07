@@ -275,7 +275,7 @@ JS
         /** @var AbstractBrowser $client */
         $client = $clientFactory();
         $crawler = $client->request('GET', static::$baseUri.'/form.html');
-        $form = $crawler->filter('form')->eq(0)->selectButton('OK')->form([
+        $form = $crawler->filter('form#first-form')->eq(0)->selectButton('OK')->form([
             'i1' => 'Reclus',
         ]);
 
@@ -288,7 +288,7 @@ JS
         $this->assertSame('I1: Reclus', $crawler->filter('#result')->text(null, true));
 
         $crawler = $client->back();
-        $form = $crawler->filter('form')->eq(0)->form([
+        $form = $crawler->filter('form#first-form')->eq(0)->form([
             'i1' => 'Michel',
         ]);
 
@@ -318,7 +318,7 @@ JS
         /** @var AbstractBrowser $client */
         $client = $clientFactory();
         $crawler = $client->request('GET', static::$baseUri.'/form.html');
-        $form = $crawler->filter('form')->eq(0)->selectButton('OK')->form();
+        $form = $crawler->filter('form#first-form')->eq(0)->selectButton('OK')->form();
 
         $crawler = $client->submit($form, [
             'i1' => 'Reclus',
