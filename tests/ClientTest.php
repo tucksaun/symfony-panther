@@ -278,6 +278,7 @@ JS
         $form = $crawler->filter('form#first-form')->eq(0)->selectButton('OK')->form([
             'i1' => 'Reclus',
         ]);
+        dump($crawler->html(), $crawler->filter('form#first-form')->eq(0)->html());
 
         $crawler = $client->submit($form);
         $this->assertInstanceOf(DomCrawlerCrawler::class, $crawler);
